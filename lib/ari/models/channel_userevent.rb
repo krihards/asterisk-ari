@@ -27,7 +27,7 @@ module Ari
     end
 
     def userevent=(val)
-      @userevent ||= object.new(val)
+      @userevent ||= val
     end
 
 

@@ -31,7 +31,7 @@ module Ari
     end
 
     def channelvars=(val)
-      @channelvars ||= object.new(val)
+      @channelvars ||= val
     end
 
 

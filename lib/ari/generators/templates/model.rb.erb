@@ -25,7 +25,11 @@ module Ari
         if attribute.is_a_list?
           "val.map { |v| #{attribute.type}.new(v) }"
         else
-          attribute.type + '.new(val)'
+          if 'object' == attribute.type
+            'val'
+          else
+            attribute.type + '.new(val)'
+          end
         end
       end
     end -%>
