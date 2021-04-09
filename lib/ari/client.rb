@@ -64,6 +64,7 @@ module Ari
 
     def handle_websocket_message(event)
       handle_websocket_close(event) and return if event.type == :close
+      handle_websocket_pong(event) and return if event.type == :pong
       return unless event.type == :text
 
       object = MultiJson.load event.data
@@ -95,6 +96,10 @@ module Ari
 
     def handle_websocket_close(event)
       self.emit :websocket_close, event
+    end
+
+    def handle_websocket_pong(event)
+      self.emit :websocket_pong, event
     end
 
     def send_request(request)
